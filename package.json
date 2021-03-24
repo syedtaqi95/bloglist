@@ -11,13 +11,17 @@
     "mongoose": "^5.12.2"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7"
   },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\\ && exit 1"
+    "test": "jest --verbose"
   },
   "author": "Syed Taqi Haider",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
