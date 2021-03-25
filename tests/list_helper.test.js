@@ -62,6 +62,7 @@ const listWithMultipleBlogs = [
     __v: 0
   }
 ]
+
 describe('dummy', () => {
   test('dummy returns one', () => {
     const blogs = []
@@ -98,6 +99,30 @@ describe('favourite blog', () => {
 
   test('of a bigger list is calculated right', () => {
     expect(listHelper.favouriteBlog(listWithMultipleBlogs)).toEqual(listWithMultipleBlogs[2])
+  })
+
+})
+
+describe('most blogs', () => {
+
+  test('of empty list is undefined', () => {
+    expect(listHelper.mostBlogs([])).toEqual({})
+  })
+
+  test('when list has one blog equal to that author', () => {
+    expect(listHelper.mostBlogs(listWithOneBlog))
+      .toEqual({
+        author: listWithOneBlog[0].author,
+        blogs: 1
+      })
+  })
+
+  test('of a bigger list is calculated right', () => {
+    expect(listHelper.mostBlogs(listWithMultipleBlogs))
+      .toEqual({
+        author: "Robert C. Martin",
+        blogs: 3,
+      })
   })
 
 })
