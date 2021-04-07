@@ -58,13 +58,28 @@ test('blog missing likes property defaults to 0 likes', async () => {
     .post('/api/blogs')
     .send(newBlog)
     .expect(201)
-    .expect('Content-type', /application\/json/)
+    .expect('Content-Type', /application\/json/)
 
   const blogsAtEnd = await helper.blogsInDb()
   expect(blogsAtEnd.length).toEqual(helper.initialBlogs.length + 1)
 
   const contents = blogsAtEnd.map(b => b.likes)
   expect(contents).toContain(0)
+})
+
+test('invalid blog object is not saved', async () => {
+  const newBlog = {
+    author: "Test author 5",
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(400)
+    .expect('Content-Type', /application\/json/)
+  
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
 })
 
 afterAll(() => {
