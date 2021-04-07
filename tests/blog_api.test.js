@@ -26,6 +26,26 @@ test('unique identifier is named \'id\'', async () => {
   expect(id).toBeDefined()
 })
 
+test('new blog is created successfully', async () => {
+  newBlog = {
+    title: "Test title 3",
+    author: "Test author 3",
+    url: "www.test-url-3.com",
+    likes: 7,
+  }
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+  
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd.length).toEqual(helper.initialBlogs.length + 1)
+
+  const contents = blogsAtEnd.map(b => b.title)
+  expect(contents).toContain('Test title 3')
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })
