@@ -33,6 +33,7 @@ test('new blog is created successfully', async () => {
     url: "www.test-url-3.com",
     likes: 7,
   }
+
   await api
     .post('/api/blogs')
     .send(newBlog)
@@ -44,6 +45,26 @@ test('new blog is created successfully', async () => {
 
   const contents = blogsAtEnd.map(b => b.title)
   expect(contents).toContain('Test title 3')
+})
+
+test('blog missing likes property defaults to 0 likes', async () => {
+  newBlog = {
+    title: "Test title 4",
+    author: "Test author 4",
+    url: "www.test-url-4.com",
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-type', /application\/json/)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd.length).toEqual(helper.initialBlogs.length + 1)
+
+  const contents = blogsAtEnd.map(b => b.likes)
+  expect(contents).toContain(0)
 })
 
 afterAll(() => {
