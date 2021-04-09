@@ -37,13 +37,13 @@ Content-Type: application/json
 ###
 POST http://localhost:3003/api/blogs HTTP/1.1
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpoZW5kcml4IiwiaWQiOiI2MDcwMTc4ZjEyYjI5ZjIxYjRiMmM4MGQiLCJpYXQiOjE2MTc5NjYwMTd9.XNxoQriuMl0ib-r1sJXQMudP3a2DINNuKyVlMAP80-o
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoYWlkZXIiLCJpZCI6IjYwNzAwMmQzZjg1YTQyMTQxODc1NmRhYSIsImlhdCI6MTYxNzk2OTI2MH0.TLWNOC20rzVEfCc7JY1OQcwILUtYgXcH1Wem-yDc0Ic
 
 {
-  "title": "Authorisation works 2",
+  "title": "Syed's blog",
   "author": "Authorised author",
   "url": "www.test-url-something-else.com",
-  "likes": 100,
+  "likes": 42,
   "user": "607002d3f85a421418756daa"
 }
 
@@ -61,4 +61,4 @@ Authorization: bearer eyJhbGciOiJIUzIInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpoZW5kcm
 }
 
 ###
-DELETE http://localhost:3003/api/blogs/60703f4fc471bf1ab8d378d6 HTTP/1.1
+DELETE http://localhost:3003/api/blogs/60704566ed760a1e4401b6d3 HTTP/1.1
