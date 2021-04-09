@@ -9,3 +9,33 @@ Content-Type: application/json
   "name": "Syed Haider",
   "password": "secret"
 }
+
+###
+POST http://localhost:3003/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "a",
+  "name": "Short username",
+  "password": "secret"
+}
+
+###
+POST http://localhost:3003/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "abcde",
+  "name": "Short password",
+  "password": "s"
+}
+
+###
+POST http://localhost:3003/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "shaider",
+  "name": "Duplicate username",
+  "password": "secret2"
+}
