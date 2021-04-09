@@ -113,7 +113,7 @@ describe('username and password input validation', () => {
     await api
       .post('/api/users')
       .send(invalidUser)
-      .expect(401)
+      .expect(400)
       .expect('Content-Type', /application\/json/)
     
     const usersAtEnd = await helper.usersInDb()

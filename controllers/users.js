@@ -14,9 +14,8 @@ usersRouter.post('/', async (request, response) => {
   const lengthCorrect = (body.username.length > 3) && (body.password.length > 3)  
   const users = await User.find({})
   const usernames = users.map(user => user.username)
-  const uniqueUsername = !usernames.includes(body.username)
 
-  if (!(body.username && body.password && lengthCorrect && uniqueUsername)) {
+  if (!(body.username && body.password && lengthCorrect)) {
     return response
       .status(401)
       .json({
