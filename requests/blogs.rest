@@ -61,5 +61,17 @@ Authorization: bearer eyJhbGgfhgOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN
 }
 
 ###
-DELETE http://localhost:3003/api/blogs/6070573bc9dfd83540552994 HTTP/1.1
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoYWlkZXIiLCJpZCI6IjYwNzAwMmQzZjg1YTQyMTQxODc1NmRhYSIsImlhdCI6MTYxNzk2OTI2MH0.TLWNOC20rzVEfCc7JY1OQcwILUtYgXcH1Wem-yDc0Ic
+POST http://localhost:3003/api/blogs HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpoZW5kcml4IiwiaWQiOiI2MDcwMTc4ZjEyYjI5ZjIxYjRiMmM4MGQiLCJpYXQiOjE2MTgwNTQxODJ9.Fi_nsgVuwGgXMp0swInC20uf_tzjp7IIPFufuhRjLNI
+
+{
+  "title": "Blog request without userId",
+  "author": "Author userId",
+  "url": "www.test-url-something-else.com",
+  "likes": 666
+}
+
+###
+DELETE http://localhost:3003/api/blogs/60718c5cb071300da89f3417 HTTP/1.1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpoZW5kcml4IiwiaWQiOiI2MDcwMTc4ZjEyYjI5ZjIxYjRiMmM4MGQiLCJpYXQiOjE2MTgwNTQxODJ9.Fi_nsgVuwGgXMp0swInC20uf_tzjp7IIPFufuhRjLNI
