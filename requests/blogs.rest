@@ -97,3 +97,11 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoY
 {
   "comment": "Test comment 2"
 }
+
+###
+POST http://localhost:3003/api/blogs/608e585e9cc2e92a348d9278/comments
+Content-Type: application/json
+
+{
+  "comment": "Mans got that crpyto Lambo"
+}
