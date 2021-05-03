@@ -75,3 +75,25 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpoZ
 ###
 DELETE http://localhost:3003/api/blogs/60718c5cb071300da89f3417 HTTP/1.1
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpoZW5kcml4IiwiaWQiOiI2MDcwMTc4ZjEyYjI5ZjIxYjRiMmM4MGQiLCJpYXQiOjE2MTgwNTQxODJ9.Fi_nsgVuwGgXMp0swInC20uf_tzjp7IIPFufuhRjLNI
+
+###
+POST http://localhost:3003/api/blogs HTTP/1.1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoYWlkZXIiLCJpZCI6IjYwNzAwMmQzZjg1YTQyMTQxODc1NmRhYSIsImlhdCI6MTYyMDAzOTE2NX0.w8U56_HBAG9kb0gJVUrdrOC3xZwVlUIueyKNT2VV2xM
+
+{
+  "title": "Test",
+  "author": "author",
+  "url": "www.test-url-something-else.com",
+  "likes": 42,
+  "user": "607002d3f85a421418756daa"
+}
+
+###
+POST http://localhost:3003/api/blogs/608fd62743af8212007dc961/comments
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNoYWlkZXIiLCJpZCI6IjYwNzAwMmQzZjg1YTQyMTQxODc1NmRhYSIsImlhdCI6MTYyMDAzOTE2NX0.w8U56_HBAG9kb0gJVUrdrOC3xZwVlUIueyKNT2VV2xM
+
+{
+  "comment": "Test comment 2"
+}

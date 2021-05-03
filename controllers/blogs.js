@@ -1,6 +1,5 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
-const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 blogsRouter.get('/', async (request, response) => {
@@ -58,6 +57,16 @@ blogsRouter.put('/:id', async (request, response) => {
     .findByIdAndUpdate(request.params.id, request.body, { new: true })
     .populate('user', { username: 1, name: 1 })
   response.json(updatedBlog)
+})
+
+blogsRouter.post('/:id/comments', async (request, response) => {
+  const commentedBlog = await Blog
+    .findByIdAndUpdate(
+      request.params.id,
+      { $push: { comments: request.body.comment } },
+      { new: true }
+    )
+  response.json(commentedBlog)
 })
 
 module.exports = blogsRouter
