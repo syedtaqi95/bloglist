@@ -2,7 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require('path')
 
 const config = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['@babel/polyfill', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'main.js',

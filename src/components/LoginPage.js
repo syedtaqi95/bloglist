@@ -28,7 +28,7 @@ const LoginPage = () => {
       <Notification />
       <Form onSubmit={handleLogin}>
         <Form.Group>
-          <Form.Label>Username - Who are you???</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
             id="username"
