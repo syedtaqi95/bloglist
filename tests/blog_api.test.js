@@ -53,10 +53,10 @@ describe('GET request', () => {
 
 describe('POST and DELETE requests', () => {
   test('new blog is created successfully', async () => {
-    newBlog = {
-      title: "Test title 3",
-      author: "Test author 3",
-      url: "www.test-url-3.com",
+    const newBlog = {
+      title: 'Test title 3',
+      author: 'Test author 3',
+      url: 'www.test-url-3.com',
       likes: 7,
       user: userId,
     }
@@ -76,10 +76,10 @@ describe('POST and DELETE requests', () => {
   })
 
   test('blog missing likes property defaults to 0 likes', async () => {
-    newBlog = {
-      title: "Test title 4",
-      author: "Test author 4",
-      url: "www.test-url-4.com",
+    const newBlog = {
+      title: 'Test title 4',
+      author: 'Test author 4',
+      url: 'www.test-url-4.com',
       user: userId,
     }
 
@@ -99,7 +99,7 @@ describe('POST and DELETE requests', () => {
 
   test('invalid blog object is not saved', async () => {
     const newBlog = {
-      author: "Test author 5",
+      author: 'Test author 5',
       user: userId,
     }
 
@@ -131,10 +131,10 @@ describe('POST and DELETE requests', () => {
   })
 
   test('POST without token fails with proper statuscode', async () => {
-    newBlog = {
-      title: "Test title 3",
-      author: "Test author 3",
-      url: "www.test-url-3.com",
+    const newBlog = {
+      title: 'Test title 3',
+      author: 'Test author 3',
+      url: 'www.test-url-3.com',
       likes: 7,
       user: userId,
     }

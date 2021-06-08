@@ -10,12 +10,10 @@ usersRouter.get('/', async (request, response) => {
 })
 
 usersRouter.post('/', async (request, response) => {
-  body = request.body
+  const body = request.body
 
   // Input validation
-  const lengthCorrect = (body.username.length > 3) && (body.password.length > 3)  
-  const users = await User.find({})
-  const usernames = users.map(user => user.username)
+  const lengthCorrect = (body.username.length > 3) && (body.password.length > 3)
 
   if (!(body.username && body.password && lengthCorrect)) {
     return response

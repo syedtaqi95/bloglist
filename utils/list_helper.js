@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-const dummy = (blogs) => {
+const dummy = () => {
   return 1
 }
 
@@ -25,14 +25,14 @@ const mostBlogs = (blogs) => {
     const mostBlogsAuthor = Object.keys(blogCount).reduce((prev, cur) => {
       return blogCount[prev] > blogCount[cur] ? prev : cur
     })
-    return { 
+    return {
       author: mostBlogsAuthor,
       blogs: blogCount[mostBlogsAuthor]
     }
   }
-  catch {
+  catch (e) {
     return {}
-  }  
+  }
 }
 
 module.exports = {

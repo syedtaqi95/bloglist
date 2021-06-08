@@ -19,12 +19,12 @@ describe('when there is one user in db', () => {
 
   test('GET returns the list of users', async () => {
     const usersInDb = await User.find({})
-    
+
     const response = await api
       .get('/api/users')
       .expect(200)
       .expect('Content-Type', /application\/json/)
-    
+
     const usernames = response.body.map(user => user.username)
     expect(usernames).toHaveLength(usersInDb.length)
     expect(usernames).toContain(usersInDb[0].username)
@@ -44,13 +44,13 @@ describe('when there is one user in db', () => {
       .send(newUser)
       .expect(200)
       .expect('Content-Type', /application\/json/)
-    
+
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length + 1)
 
     const usernames = usersAtEnd.map(u => u.username)
     expect(usernames).toContain(newUser.username)
-  })  
+  })
 })
 
 describe('username and password input validation', () => {
@@ -75,7 +75,7 @@ describe('username and password input validation', () => {
       .send(invalidUser)
       .expect(401)
       .expect('Content-Type', /application\/json/)
-    
+
     const usersAtEnd = await helper.usersInDb()
     const usernames = usersAtEnd.map(u => u.username)
 
@@ -94,7 +94,7 @@ describe('username and password input validation', () => {
       .send(invalidUser)
       .expect(401)
       .expect('Content-Type', /application\/json/)
-    
+
     const usersAtEnd = await helper.usersInDb()
     const usernames = usersAtEnd.map(u => u.username)
 
@@ -115,7 +115,7 @@ describe('username and password input validation', () => {
       .send(invalidUser)
       .expect(400)
       .expect('Content-Type', /application\/json/)
-    
+
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length)
   })
