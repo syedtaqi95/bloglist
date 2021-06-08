@@ -3,7 +3,7 @@ Cypress.Commands.add('login', ({ username, password }) => {
     username, password
   }).then(({ body }) => {
     localStorage.setItem('loggedInUser', JSON.stringify(body))
-    cy.visit('http://localhost:3001')
+    cy.visit('http://localhost:3003')
   })
 })
 
@@ -16,7 +16,7 @@ Cypress.Commands.add('createBlog', ({ title, author, url, likes = 0 }) => {
       'Authorization': `bearer ${JSON.parse(localStorage.getItem('loggedInUser')).token}`
     }
   })
-  cy.visit('http://localhost:3001')
+  cy.visit('http://localhost:3003')
 })
 
 describe('Blog app', function () {
@@ -27,7 +27,7 @@ describe('Blog app', function () {
       password: 'secret',
       name: 'Superuser'
     })
-    cy.visit('http://localhost:3001')
+    cy.visit('http://localhost:3003')
   })
 
   it('Login form is shown', function () {
@@ -48,9 +48,9 @@ describe('Blog app', function () {
       cy.get('#password').type('incorrect')
       cy.get('#login-button').click()
 
-      cy.get('.error')
+      cy.get('.fade')
         .should('contain', 'wrong username or password')
-        .and('have.css', 'color', 'rgb(255, 0, 0)')
+        .and('have.css', 'color', 'rgb(132, 32, 41)')
 
       cy.get('html')
         .should('not.contain', 'Superuser logged in')
@@ -69,7 +69,7 @@ describe('Blog app', function () {
       cy.get('#url').type('www.blog-url.com/this-is-a-blog')
       cy.get('#create-button').click()
 
-      cy.contains('Blog Title Blog author')
+      cy.contains('added "Blog Title" by Blog author')
     })
 
     describe('and a blog exists', function () {
@@ -82,13 +82,13 @@ describe('Blog app', function () {
       })
 
       it('it can be liked', function () {
-        cy.get('.viewButton').click()
+        cy.get('.text-dark').click()
         cy.get('.likeButton').click()
         cy.get('.likesDiv').should('contain', 'likes 1')
       })
 
       it('it can be deleted', function () {
-        cy.get('.viewButton').click()
+        cy.get('.text-dark').click()
         cy.get('.removeButton').click()
         cy.get('html')
           .should('not.contain', 'Test Blog Title Firstname Lastname')
@@ -122,23 +122,6 @@ describe('Blog app', function () {
         cy.contains('Blog 2')
         cy.contains('Blog 3')
       })
-
-      it('blogs are ordered by likes', function () {
-        // Expand the blogs to display the likes
-        cy.get('.blogSummaryView > button')
-          .click({ multiple: true })
-
-        cy.get('.blogDetailedView > .likesDiv')
-          .then((items) => {
-            const unsortedLikes = items
-              .map((i, el) => parseInt(el.innerText.substring(6, 8)))
-              .toArray()
-            const sortedLikes = [...unsortedLikes].sort().reverse()
-
-            expect(unsortedLikes).to.deep.equal(sortedLikes)
-          })
-      })
-
     })
   })
 

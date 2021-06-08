@@ -30,10 +30,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
+    "cypress": "^7.5.0",
     "eslint": "^7.28.0",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-jest": "^24.3.6",
@@ -53,15 +58,22 @@
   "scripts": {
     "start": "webpack serve --mode=development",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "start-test": "cross-env NODE_ENV=test node index.js",
     "start-prod": "node index.js",
     "build": "webpack --mode=production",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
+    "test:e2e": "cross-env NODE_ENV=test cypress run",
     "start:test": "cross-env NODE_ENV=test node index.js",
-    "eslint": "eslint \"**/*.{js,jsx}\""
+    "eslint": "eslint \"**/*.{js,jsx}\"",
+    "cypress:open": "cypress open"
   },
   "author": "Syed Taqi Haider",
   "license": "MIT",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/cypress/",
+      "<rootDir>/node_modules/"
+    ]
   }
 }
