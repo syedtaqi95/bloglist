@@ -23,6 +23,11 @@ app.use('/api/blogs', middleware.userExtractor, blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
+// Health check to confirm if the app is running
+app.get('/health', (req, res) => {
+  res.send('ok')
+})
+
 // Serve static files from React app
 app.use(express.static('build'))
 // Route any unknown routes to index.html
