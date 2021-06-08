@@ -1,7 +1,13 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, render } from '@testing-library/react'
 import Blog from './Blog'
+import store from '../store'
+import { Provider } from 'react-redux'
 
 describe('<Blog />', () => {
 
@@ -17,7 +23,9 @@ describe('<Blog />', () => {
 
   test('renders only the title and author by default', () => {
     const component = render(
-      <Blog blog={blog} />
+      <Provider store={store}>
+        <Blog blog={blog} />
+      </Provider>
     )
 
     const div = component.container.querySelector('div')

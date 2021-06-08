@@ -20,7 +20,8 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react', '@babel/plugin-syntax-jsx']
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ['@babel/plugin-syntax-jsx']
         },
       },
       {
